@@ -19,7 +19,7 @@ A sleek, modern theme with a refreshing green palette and subtle glassmorphism f
 **Quick Install:**
 
 ```bash
-omarchy-theme-install https://github.com/abhijeet-swami/omarchy-forest-green
+omarchy-theme-install https://github.com/abhijeet-swami/omarchy-forest-green-theme
 ```
 
 ---
