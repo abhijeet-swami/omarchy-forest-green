@@ -1,0 +1,28 @@
+@define-color selected-text #D4E157; 
+@define-color text          #a8e6a1; 
+@define-color base          #0f1a14; 
+@define-color border        #4CAF50; 
+@define-color foreground    #a8e6a1; 
+@define-color background    #0f1a14;
+
+#window {
+  background: transparent;
+  border: none;
+}
+
+#window > #box,
+#box {
+  background: @background;
+  color: @text;
+  border: 1px solid @border;
+  border-radius: 12px;
+  padding: 10px;
+  -gtk-outline-radius: 12px;
+}
+
+#search, #bar, #scroll, #list,
+.search, .bar, .scroll, .list {
+  background: transparent;
+  border: none;
+  border-radius: 0;
+}

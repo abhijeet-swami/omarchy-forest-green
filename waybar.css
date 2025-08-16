@@ -1,0 +1,82 @@
+@define-color background #1e2a24;
+@define-color foreground #B9F6CA;
+@define-color hover #d0f0d7;
+@define-color accent #6bbf7a;
+@define-color selected #dfff00;
+@define-color warning #e5c07b;
+@define-color critical #e06c75;
+@define-color border alpha(@accent, 0.7);
+
+window#waybar {
+    background-color: @background;
+    color: @foreground;
+    font-family: "Liberation Sans", "Noto Sans", sans-serif;
+    font-size: 14px;
+    border-radius: 12px;
+    border: 2px solid @border;
+    transition: background-color 0.5s;
+}
+
+.modules-left > *,
+.modules-center > *,
+.modules-right > * {
+    padding: 2px 14px;
+    margin: 4px 0px;
+}
+
+#workspaces button {
+    background: transparent;
+    color: @foreground;
+    border: none;
+    border-radius: 8px;
+    padding: 0px 8px;
+    margin: 0 4px;
+    transition: all 0.3s ease-in-out;
+}
+
+#workspaces button:hover {
+    color: @hover;
+    background: transparent;
+}
+
+#workspaces button.active {
+    color: @background;
+    font-weight: bold;
+}
+
+#workspaces button.urgent {
+    background-color: @critical;
+    color: @background;
+}
+
+#clock,
+#battery,
+#pulseaudio,
+#network,
+#tray {
+    color: @foreground;
+}
+
+#battery.charging, #battery.plugged {
+    color: @accent;
+}
+
+#battery.warning:not(.charging) {
+    color: @warning;
+}
+
+#battery.critical:not(.charging) {
+    background-color: @critical;
+    color: @background;
+    border-radius: 8px;
+}
+
+tooltip {
+    background-color: @background;
+    border: 2px solid @accent;
+    border-radius: 8px;
+}
+
+tooltip label {
+    color: @foreground;
+}
