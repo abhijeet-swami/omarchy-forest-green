@@ -24,6 +24,12 @@ window#waybar {
     margin: 4px 0px;
 }
 
+.modules-left > *:hover,
+.modules-center > *:hover,
+.modules-right > *:hover {
+    color: @hover;
+}
+
 #workspaces button {
     background: transparent;
     color: @foreground;
@@ -40,7 +46,7 @@ window#waybar {
 }
 
 #workspaces button.active {
-    color: @background;
+    color: @accent;
     font-weight: bold;
 }
 
@@ -57,7 +63,8 @@ window#waybar {
     color: @foreground;
 }
 
-#battery.charging, #battery.plugged {
+#battery.charging, 
+#battery.plugged {
     color: @accent;
 }
 
@@ -69,6 +76,14 @@ window#waybar {
     background-color: @critical;
     color: @background;
     border-radius: 8px;
+}
+
+#pulseaudio.muted {
+    color: @critical;
+}
+
+#network.disconnected {
+    color: @critical;
 }
 
 tooltip {
