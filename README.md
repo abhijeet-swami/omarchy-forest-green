@@ -16,7 +16,7 @@ A sleek, modern theme with a refreshing green palette and subtle glassmorphism f
 omarchy-theme-install https://github.com/abhijeet-swami/omarchy-forest-green-theme
 ```
 
-After installing, you can apply the **Forest Green Waybar** with:
+After installing, you can try the **Forest Green Waybar** with:
 
 ```bash
 pkill waybar
