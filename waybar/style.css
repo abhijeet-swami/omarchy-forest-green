@@ -1,0 +1,187 @@
+@define-color base-bg #1e2a24;
+@define-color pill-bg #2a3a31;
+@define-color text-fg #B9F6CA;
+@define-color hover-bg alpha(#B9F6CA, 0.1);
+@define-color accent #6bbf7a;
+@define-color warning #e5c07b;
+@define-color critical #e06c75;
+@define-color inactive #6a7a71;
+
+* {
+    border: none;
+    border-radius: 0;
+    font-family: "JetBrainsMono Nerd Font", sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+    min-height: 0;
+}
+
+window#waybar {
+    background: transparent;
+    margin-top: 10px;
+}
+
+/* --- General Module Styles --- */
+#cpu,
+#memory,
+#temperature,
+#custom-update,
+#tray,
+#bluetooth,
+#network,
+#pulseaudio,
+#battery,
+#clock {
+    background-color: @pill-bg;
+    color: @text-fg;
+    padding: 0 10px;
+    margin: 5px 0;
+    transition: background-color 0.3s ease;
+}
+
+#cpu,
+#memory,
+#temperature{
+    padding: 0 6px;
+}
+
+#cpu:hover,
+#memory:hover,
+#temperature:hover,
+#custom-update:hover,
+#bluetooth:hover,
+#network:hover,
+#pulseaudio:hover,
+#battery:hover,
+#clock:hover {
+    background-color: @hover-bg;
+}
+
+/* --- Specific Module Styles & Overrides --- */
+#window {
+    color: @accent;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+    border-radius: 16px;
+    margin-left: 10px;
+}
+
+#cpu {
+    border-top-left-radius: 16px;
+    border-bottom-left-radius: 16px;
+    margin-left: 10px;
+    padding-left: 10px;
+}
+
+#temperature {
+    border-top-right-radius: 16px;
+    border-bottom-right-radius: 16px;
+    padding-right: 10px;
+}
+
+#custom-update {
+    border-top-right-radius: 16px;
+    border-bottom-right-radius: 16px;
+    margin-right: 10px;
+    padding-right: 12px;
+}
+
+#tray-expander {
+  background-color: @pill-bg;
+  color: @text-fg;
+  margin: 5px 0;
+  border-top-left-radius: 16px;
+  border-bottom-left-radius: 16px;
+  padding-left: 10px;
+}
+
+#tray {
+    padding-left: 8px;
+}
+
+#battery {
+    border-top-right-radius: 16px;
+    border-bottom-right-radius: 16px;
+    margin-right: 10px;
+    padding-right: 12px;
+}
+
+#clock {
+    background-color: @accent;
+    color: @base-bg;
+    border-radius: 16px;
+    margin-right: 10px;
+    padding-right: 10px;
+}
+
+#clock:hover {
+    color: @text-fg; 
+}
+
+#workspaces {
+    background-color: @pill-bg;
+    color: @text-fg;
+    margin: 5px 0;
+    transition: background-color 0.3s ease;
+    border-radius: 16px;
+    padding: 0 3px;
+}
+
+#workspaces button {
+    color: @inactive;
+    background: transparent;
+    padding: 0 6px;
+    border-radius: 10px;
+}
+
+#workspaces button:hover {
+    background-color: @hover-bg;
+}
+
+#workspaces button.active {
+    color: @accent;
+}
+
+/* --- Module States --- */
+#network.disconnected,
+#bluetooth.disabled,
+#pulseaudio.muted {
+    color: @critical;
+}
+
+#battery.warning:not(.charging) {
+    color: @warning;
+}
+
+#battery.charging,
+#battery.plugged {
+    color: @accent;
+}
+
+@keyframes blink {
+    to {
+        background-color: @critical;
+        color: @base-bg;
+    }
+}
+
+#battery.critical:not(.charging) {
+    background-color: @critical;
+    color: @base-bg;
+    animation-name: blink;
+    animation-duration: 0.5s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+/* --- Tooltip --- */
+tooltip {
+    background-color: @pill-bg;
+    border: 2px solid @accent;
+    border-radius: 16px;
+    padding: 8px 12px;
+}
+
+tooltip label {
+    color: @text-fg;
+}
