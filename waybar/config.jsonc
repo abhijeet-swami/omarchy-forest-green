@@ -1,28 +1,55 @@
 {
-  "reload_style_on_change": true,
-  "layer": "top",
-  "position": "top",
-  "spacing": 0,
-  "height": 26,
-  "modules-left": [
-    "custom/omarchy",
-    "hyprland/workspaces"
-  ],
-  "modules-center": [
-    "clock",
-    "custom/update"
-  ],
+  // Global settings
+  "margin-top": 2,
+  "margin-left": 2,
+  "margin-right": 2,
+  "height": 35,
+
+  // Module placement
+  "modules-left": ["cpu", "memory", "temperature","hyprland/window"],
+  "modules-center": ["hyprland/workspaces", "custom/update"],
   "modules-right": [
     "group/tray-expander",
     "bluetooth",
     "network",
     "pulseaudio",
-    "cpu",
-    "battery"
+    "battery",
+    "custom/omarchy",
+    "clock"
   ],
+
+  // ---------------------------------------------------------------- //
+  // ------------------------- Left Modules ------------------------- //
+  // ---------------------------------------------------------------- //
+  "hyprland/window": {
+    "format": "{}",
+    "max-length": 30
+  },
+  "cpu": {
+    "interval": 5,
+    "format": "{usage}%",
+    "on-click": "alacritty -e btop"
+  },
+  "memory": {
+    "format": "{used:0.1f}G",
+    "interval": 2,
+    "on-click": "alacritty -e btop",
+    "tooltip": false
+  },
+  "temperature": {
+    "thermal-zone": 2,
+    "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
+    "critical-threshold": 80,
+    "format": "{temperatureC}°C",
+    "tooltip": false
+  },
+
+  // ------------------------------------------------------------------ //
+  // ------------------------ Center Modules ------------------------ //
+  // ------------------------------------------------------------------ //
   "hyprland/workspaces": {
-    "on-click": "activate",
     "format": "{icon}",
+    "on-click": "activate",
     "format-icons": {
       "default": "",
       "1": "1",
@@ -39,16 +66,10 @@
     "persistent-workspaces": {
       "1": [],
       "2": [],
-      "3": [],
-      "4": [],
-      "5": []
-    }
-  },/*
-  "custom/omarchy": {
-    "format": "",
-    "on-click": "omarchy-menu",
-    "tooltip-format": "Omarchy Menu\n\nSuper + Alt + Space"
-  },*/
+      "3": []
+    },
+    "sort-by-number": true
+  },
   "custom/update": {
     "format": "",
     "exec": "omarchy-update-available",
@@ -56,51 +77,25 @@
     "tooltip-format": "Omarchy update available",
     "interval": 3600
   },
-  "cpu": {
-    "interval": 5,
-    "format": "󰍛",
-    "on-click": "alacritty -e btop"
-  },
-  "clock": {
-    "format": "{:%A %H:%M}",
-    "format-alt": "{:%d %B W%V %Y}",
-    "tooltip": false,
-    "on-click-right": "omarchy-cmd-tzupdate"
-  },
-  "network": {
-    "format-icons": ["󰤯","󰤟","󰤢","󰤥","󰤨"],
-    "format" : "{icon}",
-    "format-wifi" : "{icon}",
-    "format-ethernet" : "󰀂",
-    "format-disconnected" : "󰖪",
-    "tooltip-format-wifi": "{essid} ({frequency} GHz)\n⇣{bandwidthDownBytes}  ⇡{bandwidthUpBytes}",
-    "tooltip-format-ethernet": "⇣{bandwidthDownBytes}  ⇡{bandwidthUpBytes}",
-    "tooltip-format-disconnected": "Disconnected",
-    "interval": 3,
-    "nospacing": 1,
-    "on-click": "alacritty --class=Impala -e impala"
-  },
-  "battery": {
-    "format": "{capacity}% {icon}",
-    "format-discharging": "{icon}",
-    "format-charging":    "{icon}",
-    "format-plugged":     "",
-    "format-icons": {
-      "charging": [
-        "󰢜", "󰂆", "󰂇", "󰂈", "󰢝", "󰂉", "󰢞", "󰂊", "󰂋", "󰂅"
-      ],
-      "default": [
-        "󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"
-      ]
+
+  // ----------------------------------------------------------------- //
+  // ------------------------- Right Modules ------------------------- //
+  // ----------------------------------------------------------------- //
+  "group/tray-expander": {
+    "orientation": "inherit",
+    "drawer": {
+      "transition-duration": 600,
+      "children-class": "tray-group-item"
     },
-    "format-full": "󰂅",
-    "tooltip-format-discharging": "{power:>1.0f}W↓ {capacity}%",
-    "tooltip-format-charging": "{power:>1.0f}W↑ {capacity}%",
-    "interval": 5,
-    "states": {
-      "warning": 20,
-      "critical": 10
-    }
+    "modules": ["custom/expand-icon", "tray"]
+  },
+  "custom/expand-icon": {
+    "format": " ",
+    "tooltip": false
+  },
+  "tray": {
+    "icon-size": 12,
+    "spacing": 12
   },
   "bluetooth": {
     "format": "",
@@ -108,6 +103,19 @@
     "format-connected": "",
     "tooltip-format": "Devices connected: {num_connections}",
     "on-click": "blueberry"
+  },
+  "network": {
+    "format-icons": ["󰤯", "󰤟", "󰤢", "󰤥", "󰤨"],
+    "format": "{icon}",
+    "format-wifi": "{icon}",
+    "format-ethernet": "󰀂",
+    "format-disconnected": "󰖪",
+    "tooltip-format-wifi": "{essid} ({frequency} GHz)\n⇣{bandwidthDownBytes}  ⇡{bandwidthUpBytes}",
+    "tooltip-format-ethernet": "⇣{bandwidthDownBytes}  ⇡{bandwidthUpBytes}",
+    "tooltip-format-disconnected": "Disconnected",
+    "interval": 3,
+    "nospacing": 1,
+    "on-click": "alacritty --class=Impala -e impala"
   },
   "pulseaudio": {
     "format": "{icon}",
@@ -120,23 +128,33 @@
       "default": ["", "", ""]
     }
   },
-  "group/tray-expander": {
-    "orientation": "inherit",
-    "drawer": {
-      "transition-duration": 600,
-      "children-class": "tray-group-item"
+  "battery": {
+    "format": "{capacity}% {icon}",
+    "format-discharging": "{icon}",
+    "format-charging": "{icon}",
+    "format-plugged": "",
+    "format-icons": {
+      "charging": ["󰢜", "󰂆", "󰂇", "󰂈", "󰢝", "󰂉", "󰢞", "󰂊", "󰂋", "󰂅"],
+      "default": ["󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"]
     },
-    "modules": [
-      "custom/expand-icon",
-    "tray"
-    ]
+    "format-full": "󰂅",
+    "tooltip-format-discharging": "{power:>1.0f}W↓ {capacity}%",
+    "tooltip-format-charging": "{power:>1.0f}W↑ {capacity}%",
+    "interval": 5,
+    "states": {
+      "warning": 20,
+      "critical": 10
+    }
   },
-  "custom/expand-icon": {
-    "format": " ",
-    "tooltip": false
+   "custom/omarchy": {
+    "format": "",
+    "on-click": "omarchy-menu",
+    "tooltip-format": "Omarchy Menu\n\nSuper + Alt + Space"
   },
-  "tray": {
-    "icon-size": 12,
-    "spacing": 12
+   "clock": {
+    "format": "{:%A %H:%M}",
+    "format-alt": "{:%d %B W%V %Y}",
+    "tooltip": false,
+    "on-click-right": "omarchy-cmd-tzupdate"
   }
 }

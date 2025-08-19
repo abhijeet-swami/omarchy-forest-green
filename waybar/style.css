@@ -1,51 +1,189 @@
-@import "../omarchy/current/theme/waybar.css";
+@define-color base-bg #1e2a24;
+@define-color pill-bg #2a3a31;
+@define-color text-fg #B9F6CA;
+@define-color hover-bg alpha(#B9F6CA, 0.1);
+@define-color accent #6bbf7a;
+@define-color warning #e5c07b;
+@define-color critical #e06c75;
+@define-color inactive #6a7a71;
 
 * {
-  background-color: @background;
-  color: @foreground;
-
-  border: none;
-  border-radius: 0;
-  min-height: 0;
-  font-family: CaskaydiaMono Nerd Font;
-  font-size: 12px;
+    border: none;
+    border-radius: 0;
+    font-family: "JetBrainsMono Nerd Font", sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+    min-height: 0;
 }
 
-.modules-left {
-  margin-left: 8px;
+window#waybar {
+    background: transparent;
+    margin-top: 10px;
 }
 
-.modules-right {
-  margin-right: 8px;
+/* --- General Module Styles --- */
+#cpu,
+#memory,
+#temperature,
+#custom-update,
+#tray,
+#bluetooth,
+#network,
+#pulseaudio,
+#battery,
+#custom-omarchy,
+#clock {
+    background-color: @pill-bg;
+    color: @text-fg;
+    padding: 0 10px;
+    margin: 5px 0;
+    transition: background-color 0.3s ease;
+}
+
+#cpu,
+#memory,
+#temperature{
+    padding: 0 6px;
+}
+
+#cpu:hover,
+#memory:hover,
+#temperature:hover,
+#custom-update:hover,
+#bluetooth:hover,
+#network:hover,
+#pulseaudio:hover,
+#battery:hover,
+#custom-omarchy:hover,
+#clock:hover {
+    background-color: @hover-bg;
+}
+
+/* --- Specific Module Styles & Overrides --- */
+#window {
+    color: @accent;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+    border-radius: 16px;
+    margin-left: 10px;
+}
+
+#cpu {
+    border-top-left-radius: 16px;
+    border-bottom-left-radius: 16px;
+    margin-left: 10px;
+    padding-left: 10px;
+}
+
+#temperature {
+    border-top-right-radius: 16px;
+    border-bottom-right-radius: 16px;
+    padding-right: 10px;
+}
+
+#custom-update {
+    border-top-right-radius: 16px;
+    border-bottom-right-radius: 16px;
+    margin-right: 10px;
+    padding-right: 12px;
+}
+
+#tray-expander {
+  background-color: @pill-bg;
+  color: @text-fg;
+  margin: 5px 0;
+  border-top-left-radius: 16px;
+  border-bottom-left-radius: 16px;
+  padding-left: 10px;
+}
+
+#tray {
+    padding-left: 8px;
+}
+
+#custom-omarchy {
+    border-top-right-radius: 16px;
+    border-bottom-right-radius: 16px;
+    margin-right: 10px;
+    padding-right: 14px;
+}
+
+#clock {
+    background-color: @accent;
+    color: @base-bg;
+    border-radius: 16px;
+    margin-right: 10px;
+    padding-right: 10px;
+}
+
+#clock:hover {
+    color: @text-fg; 
+}
+
+#workspaces {
+    background-color: @pill-bg;
+    color: @text-fg;
+    margin: 5px 0;
+    transition: background-color 0.3s ease;
+    border-radius: 16px;
+    padding: 0 3px;
 }
 
 #workspaces button {
-  all: initial;
-  padding: 0 6px;
-  margin: 0 1.5px;
-  min-width: 9px;
+    color: @inactive;
+    background: transparent;
+    padding: 0 6px;
+    border-radius: 10px;
 }
 
-#workspaces button.empty {
-  opacity: 0.5;
+#workspaces button:hover {
+    background-color: @hover-bg;
 }
 
-#tray,
-#cpu,
-#battery,
-#network,
-#bluetooth,
-#pulseaudio,
-#clock,
-#custom-omarchy {
-  min-width: 12px;
-  margin: 0 7.5px;
+#workspaces button.active {
+    color: @accent;
 }
 
-#custom-expand-icon {
-  margin-right: 7px;
+/* --- Module States --- */
+#network.disconnected,
+#bluetooth.disabled,
+#pulseaudio.muted {
+    color: @critical;
 }
 
+#battery.warning:not(.charging) {
+    color: @warning;
+}
+
+#battery.charging,
+#battery.plugged {
+    color: @accent;
+}
+
+@keyframes blink {
+    to {
+        background-color: @critical;
+        color: @base-bg;
+    }
+}
+
+#battery.critical:not(.charging) {
+    background-color: @critical;
+    color: @base-bg;
+    animation-name: blink;
+    animation-duration: 0.5s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+/* --- Tooltip --- */
 tooltip {
-  padding: 2px;
+    background-color: @pill-bg;
+    border: 2px solid @accent;
+    border-radius: 16px;
+    padding: 8px 12px;
+}
+
+tooltip label {
+    color: @text-fg;
 }
