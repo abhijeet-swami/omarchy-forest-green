@@ -1,128 +1,183 @@
-return {
-        {
-                "LazyVim/LazyVim",
-                opts = {
-                        colorscheme = function()
-                                local colors = {
-                                        bg = "#1e2a24",
-                                        fg = "#a8e6a1",
-                                        primary = "#89f6c4",
-                                        secondary = "#6bbf7a",
-                                        success = "#B9E8B5",
-                                        danger = "#e06c75",
-                                        warning = "#e5c07b",
-                                        info = "#4DD0E1",
-                                        muted = "#3a5f4a",
-                                        dark = "#0f1a14",
-                                        accent = "#cddc39",
-                                        subtle = "#2a3f2d",
-                                        border = "#4a5f4d",
-                                }
+local M = {
+  {
+    "LazyVim/LazyVim",
+    opts = {
+      colorscheme = function()
+        vim.cmd("set termguicolors")
 
-                                vim.cmd("highlight clear")
-                                vim.cmd("set termguicolors")
-                               
-                                vim.api.nvim_set_hl(0, "Normal", { fg = colors.fg, bg = colors.bg })
-                                vim.api.nvim_set_hl(0, "Comment", { fg = colors.muted, italic = true })
-                                vim.api.nvim_set_hl(0, "Constant", { fg = colors.secondary })
-                                vim.api.nvim_set_hl(0, "String", { fg = colors.success })
-                                vim.api.nvim_set_hl(0, "Character", { fg = colors.success })
-                                vim.api.nvim_set_hl(0, "Number", { fg = colors.accent })
-                                vim.api.nvim_set_hl(0, "Boolean", { fg = colors.primary, bold = true })
-                                vim.api.nvim_set_hl(0, "Float", { fg = colors.accent })
-                                vim.api.nvim_set_hl(0, "Identifier", { fg = colors.info })
-                                vim.api.nvim_set_hl(0, "Function", { fg = colors.primary, bold = true })
-                                vim.api.nvim_set_hl(0, "Statement", { fg = colors.danger, bold = true })
-                                vim.api.nvim_set_hl(0, "Conditional", { fg = colors.danger })
-                                vim.api.nvim_set_hl(0, "Repeat", { fg = colors.secondary })
-                                vim.api.nvim_set_hl(0, "Label", { fg = colors.secondary })
-                                vim.api.nvim_set_hl(0, "Operator", { fg = colors.fg })
-                                vim.api.nvim_set_hl(0, "Keyword", { fg = colors.primary, bold = true })
-                                vim.api.nvim_set_hl(0, "Exception", { fg = colors.danger })
-                                vim.api.nvim_set_hl(0, "PreProc", { fg = colors.secondary })
-                                vim.api.nvim_set_hl(0, "Include", { fg = colors.primary })
-                                vim.api.nvim_set_hl(0, "Define", { fg = colors.primary })
-                                vim.api.nvim_set_hl(0, "Macro", { fg = colors.warning })
-                                vim.api.nvim_set_hl(0, "PreCondit", { fg = colors.secondary })
-                                vim.api.nvim_set_hl(0, "Type", { fg = colors.info })
-                                vim.api.nvim_set_hl(0, "StorageClass", { fg = colors.info })
-                                vim.api.nvim_set_hl(0, "Structure", { fg = colors.secondary })
-                                vim.api.nvim_set_hl(0, "Typedef", { fg = colors.secondary })
-                                vim.api.nvim_set_hl(0, "Special", { fg = colors.accent })
-                                vim.api.nvim_set_hl(0, "SpecialChar", { fg = colors.accent })
-                                vim.api.nvim_set_hl(0, "Tag", { fg = colors.info })
-                                vim.api.nvim_set_hl(0, "Delimiter", { fg = colors.fg })
-                                vim.api.nvim_set_hl(0, "SpecialComment", { fg = colors.muted })
-                                vim.api.nvim_set_hl(0, "Debug", { fg = colors.danger })
-                               
-                                vim.api.nvim_set_hl(0, "CursorLine", { bg = colors.dark })
-                                vim.api.nvim_set_hl(0, "CursorColumn", { bg = colors.dark })
-                                vim.api.nvim_set_hl(0, "CursorLineNr", { fg = colors.primary, bold = true })
-                                vim.api.nvim_set_hl(0, "LineNr", { fg = colors.muted })
-                                vim.api.nvim_set_hl(0, "SignColumn", { fg = colors.muted, bg = colors.bg })
-                                vim.api.nvim_set_hl(0, "Visual", { bg = "#2E4D3D" })
-                                vim.api.nvim_set_hl(0, "VisualNOS", { bg = colors.subtle })
-                                vim.api.nvim_set_hl(0, "Search", { fg = colors.bg, bg = colors.primary })
-                                vim.api.nvim_set_hl(0, "IncSearch", { fg = colors.bg, bg = colors.accent })
-                                vim.api.nvim_set_hl(0, "Substitute", { fg = colors.bg, bg = colors.warning })
-                                                              
-                                vim.api.nvim_set_hl(0, "Pmenu", { fg = colors.fg, bg = colors.dark })
-                                vim.api.nvim_set_hl(0, "PmenuSel", { fg = colors.dark, bg = colors.primary })
-                                vim.api.nvim_set_hl(0, "PmenuSbar", { bg = colors.subtle })
-                                vim.api.nvim_set_hl(0, "PmenuThumb", { bg = colors.secondary })
-                                vim.api.nvim_set_hl(0, "PmenuKind", { fg = colors.info, bg = colors.dark })
-                                vim.api.nvim_set_hl(0, "PmenuKindSel", { fg = colors.dark, bg = colors.info })
-                                vim.api.nvim_set_hl(0, "PmenuExtra", { fg = colors.muted, bg = colors.dark })
-                                vim.api.nvim_set_hl(0, "PmenuExtraSel", { fg = colors.dark, bg = colors.muted })
-                                                              
-                                vim.api.nvim_set_hl(0, "StatusLine", { fg = colors.fg, bg = colors.dark })
-                                vim.api.nvim_set_hl(0, "StatusLineNC", { fg = colors.muted, bg = colors.dark })
-                                vim.api.nvim_set_hl(0, "WinSeparator", { fg = colors.border })
-                                vim.api.nvim_set_hl(0, "VertSplit", { fg = colors.border })
-                                                              
-                                vim.api.nvim_set_hl(0, "Title", { fg = colors.primary, bold = true })
-                                vim.api.nvim_set_hl(0, "ErrorMsg", { fg = colors.bg, bg = colors.danger, bold = true })
-                                vim.api.nvim_set_hl(0, "WarningMsg", { fg = colors.bg, bg = colors.warning })
-                                vim.api.nvim_set_hl(0, "MoreMsg", { fg = colors.success })
-                                vim.api.nvim_set_hl(0, "ModeMsg", { fg = colors.primary, bold = true })
-                                vim.api.nvim_set_hl(0, "Question", { fg = colors.info })
-                                                              
-                                vim.api.nvim_set_hl(0, "Folded", { fg = colors.muted, bg = colors.subtle, italic = true })
-                                vim.api.nvim_set_hl(0, "FoldColumn", { fg = colors.muted, bg = colors.bg })
-                                                              
-                                vim.api.nvim_set_hl(0, "SpellBad", { undercurl = true, sp = colors.danger })
-                                vim.api.nvim_set_hl(0, "SpellCap", { undercurl = true, sp = colors.warning })
-                                vim.api.nvim_set_hl(0, "SpellLocal", { undercurl = true, sp = colors.info })
-                                vim.api.nvim_set_hl(0, "SpellRare", { undercurl = true, sp = colors.accent })
-                                                              
-                                vim.api.nvim_set_hl(0, "TabLine", { fg = colors.muted, bg = colors.dark })
-                                vim.api.nvim_set_hl(0, "TabLineFill", { bg = colors.dark })
-                                vim.api.nvim_set_hl(0, "TabLineSel", { fg = colors.primary, bg = colors.bg, bold = true })
-                                                              
-                                vim.api.nvim_set_hl(0, "DiffAdd", { bg = "#2D4A3D" })
-                                vim.api.nvim_set_hl(0, "DiffChange", { bg = "#3D3A2D" })
-                                vim.api.nvim_set_hl(0, "DiffDelete", { bg = "#4A2D2D" })
-                                vim.api.nvim_set_hl(0, "DiffText", { bg = "#4A4A2D", bold = true })
-                                                              
-                                vim.api.nvim_set_hl(0, "Directory", { fg = colors.info })
-                                                              
-                                vim.api.nvim_set_hl(0, "MatchParen", { fg = colors.accent, bg = colors.subtle, bold = true })
-                                                               
-                                vim.api.nvim_set_hl(0, "Conceal", { fg = colors.muted })
-                                
-                                vim.api.nvim_set_hl(0, "NonText", { fg = colors.muted })
-                                vim.api.nvim_set_hl(0, "SpecialKey", { fg = colors.muted })
-                                vim.api.nvim_set_hl(0, "Whitespace", { fg = colors.muted })
-                               
-                                vim.api.nvim_set_hl(0, "DiagnosticError", { fg = colors.danger })
-                                vim.api.nvim_set_hl(0, "DiagnosticWarn", { fg = colors.warning })
-                                vim.api.nvim_set_hl(0, "DiagnosticInfo", { fg = colors.info })
-                                vim.api.nvim_set_hl(0, "DiagnosticHint", { fg = colors.muted })
-                                vim.api.nvim_set_hl(0, "DiagnosticUnderlineError", { undercurl = true, sp = colors.danger })
-                                vim.api.nvim_set_hl(0, "DiagnosticUnderlineWarn", { undercurl = true, sp = colors.warning })
-                                vim.api.nvim_set_hl(0, "DiagnosticUnderlineInfo", { undercurl = true, sp = colors.info })
-                                vim.api.nvim_set_hl(0, "DiagnosticUnderlineHint", { undercurl = true, sp = colors.muted })
-                        end,
-                },
-        },
+        local colors = {
+          bg = "#1e2a24",
+          fg = "#a8e6a1",
+          purple = "#9d7cd8",
+          primary = "#89f6c4",
+          secondary = "#6bbf7a",
+          success = "#B9E8B5",
+          danger = "#e06c75",
+          warning = "#e5c07b",
+          info = "#4DD0E1",
+          muted = "#5f876f",
+          dark = "#0f1a14",
+          accent = "#cddc39",
+          subtle = "#2a3f2d",
+          border = "#4a5f4d",
+          selection = "#2E4D3D",
+        }
+
+        vim.cmd("highlight clear")
+
+        local function set_hl(group, opts)
+          vim.api.nvim_set_hl(0, group, opts)
+        end
+
+        set_hl("Normal", { fg = colors.fg, bg = colors.bg })
+        set_hl("Comment", { fg = colors.muted, italic = true })
+        set_hl("Constant", { fg = colors.secondary })
+        set_hl("String", { fg = colors.success })
+        set_hl("Character", { fg = colors.success })
+        set_hl("Number", { fg = colors.accent })
+        set_hl("Boolean", { fg = colors.primary, bold = true })
+        set_hl("Float", { fg = colors.accent })
+        set_hl("Identifier", { fg = colors.info })
+        set_hl("Function", { fg = colors.primary, bold = true })
+        set_hl("Statement", { fg = colors.purple, bold = true })
+        set_hl("Conditional", { fg = colors.purple })
+        set_hl("Repeat", { fg = colors.purple })
+        set_hl("Label", { fg = colors.secondary })
+        set_hl("Operator", { fg = colors.fg })
+        set_hl("Keyword", { fg = colors.purple, bold = true })
+        set_hl("Exception", { fg = colors.danger })
+        set_hl("PreProc", { fg = colors.secondary })
+        set_hl("Include", { fg = colors.primary })
+        set_hl("Define", { fg = colors.primary })
+        set_hl("Macro", { fg = colors.warning })
+        set_hl("PreCondit", { fg = colors.secondary })
+        set_hl("Type", { fg = colors.warning, italic = true })
+        set_hl("StorageClass", { fg = colors.danger })
+        set_hl("Structure", { fg = colors.secondary })
+        set_hl("Typedef", { fg = colors.secondary })
+        set_hl("Special", { fg = colors.accent })
+        set_hl("SpecialChar", { fg = colors.accent })
+        set_hl("Tag", { fg = colors.info })
+        set_hl("Delimiter", { fg = colors.fg })
+        set_hl("SpecialComment", { fg = colors.muted })
+        set_hl("Debug", { fg = colors.danger })
+        set_hl("Title", { fg = colors.primary, bold = true })
+        set_hl("Directory", { fg = colors.info })
+        set_hl("MatchParen", { fg = colors.accent, bg = colors.subtle, bold = true })
+        set_hl("Conceal", { fg = colors.muted })
+        set_hl("NonText", { fg = colors.muted })
+        set_hl("SpecialKey", { fg = colors.muted })
+        set_hl("Whitespace", { fg = colors.muted })
+
+        set_hl("CursorLine", { bg = colors.dark })
+        set_hl("CursorColumn", { bg = colors.dark })
+        set_hl("CursorLineNr", { fg = colors.primary, bold = true })
+        set_hl("LineNr", { fg = colors.muted })
+        set_hl("SignColumn", { fg = colors.muted, bg = colors.bg })
+        set_hl("Visual", { bg = colors.selection })
+        set_hl("VisualNOS", { bg = colors.subtle })
+        set_hl("Search", { fg = colors.bg, bg = colors.primary })
+        set_hl("IncSearch", { fg = colors.bg, bg = colors.accent })
+        set_hl("Substitute", { fg = colors.bg, bg = colors.warning })
+        set_hl("Pmenu", { fg = colors.fg, bg = colors.dark })
+        set_hl("PmenuSel", { fg = colors.dark, bg = colors.primary })
+        set_hl("PmenuSbar", { bg = colors.subtle })
+        set_hl("PmenuThumb", { bg = colors.secondary })
+        set_hl("StatusLine", { fg = colors.fg, bg = colors.dark })
+        set_hl("StatusLineNC", { fg = colors.muted, bg = colors.dark })
+        set_hl("WinSeparator", { fg = colors.border })
+        set_hl("VertSplit", { fg = colors.border })
+        set_hl("Folded", { fg = colors.muted, bg = colors.subtle, italic = true })
+        set_hl("FoldColumn", { fg = colors.muted, bg = colors.bg })
+        set_hl("TabLine", { fg = colors.muted, bg = colors.dark })
+        set_hl("TabLineFill", { bg = colors.dark })
+        set_hl("TabLineSel", { fg = colors.primary, bg = colors.bg, bold = true })
+
+        set_hl("ErrorMsg", { fg = colors.bg, bg = colors.danger, bold = true })
+        set_hl("WarningMsg", { fg = colors.bg, bg = colors.warning })
+        set_hl("MoreMsg", { fg = colors.success })
+        set_hl("ModeMsg", { fg = colors.primary, bold = true })
+        set_hl("Question", { fg = colors.info })
+        set_hl("DiffAdd", { bg = "#2D4A3D" })
+        set_hl("DiffChange", { bg = "#3D3A2D" })
+        set_hl("DiffDelete", { bg = "#4A2D2D" })
+        set_hl("DiffText", { bg = "#4A4A2D", bold = true })
+
+        set_hl("SpellBad", { undercurl = true, sp = colors.danger })
+        set_hl("SpellCap", { undercurl = true, sp = colors.warning })
+        set_hl("SpellLocal", { undercurl = true, sp = colors.info })
+        set_hl("SpellRare", { undercurl = true, sp = colors.accent })
+
+        set_hl("DiagnosticError", { fg = colors.danger })
+        set_hl("DiagnosticWarn", { fg = colors.warning })
+        set_hl("DiagnosticInfo", { fg = colors.info })
+        set_hl("DiagnosticHint", { fg = colors.muted })
+        set_hl("DiagnosticUnderlineError", { undercurl = true, sp = colors.danger })
+        set_hl("DiagnosticUnderlineWarn", { undercurl = true, sp = colors.warning })
+        set_hl("DiagnosticUnderlineInfo", { undercurl = true, sp = colors.info })
+        set_hl("DiagnosticUnderlineHint", { undercurl = true, sp = colors.muted })
+
+        set_hl("@text", { link = "Normal" })
+        set_hl("@comment", { link = "Comment" })
+        set_hl("@constant", { link = "Constant" })
+        set_hl("@constant.builtin", { fg = colors.danger, bold = true })
+        set_hl("@string", { link = "String" })
+        set_hl("@character", { link = "Character" })
+        set_hl("@number", { link = "Number" })
+        set_hl("@boolean", { link = "Boolean" })
+        set_hl("@float", { link = "Float" })
+        set_hl("@function", { link = "Function" })
+        set_hl("@function.builtin", { fg = colors.accent, bold = true })
+        set_hl("@method", { link = "Function" })
+        set_hl("@keyword", { link = "Keyword" })
+        set_hl("@keyword.function", { link = "Keyword" })
+        set_hl("@keyword.operator", { link = "Keyword" })
+        set_hl("@operator", { link = "Operator" })
+        set_hl("@preproc", { link = "PreProc" })
+        set_hl("@type", { link = "Type" })
+        set_hl("@type.builtin", { fg = colors.warning, bold = true })
+        set_hl("@storageclass", { link = "StorageClass" })
+        set_hl("@variable", { link = "Identifier" })
+        set_hl("@variable.builtin", { fg = colors.danger, bold = true, italic = true })
+        set_hl("@property", { fg = colors.info })
+        set_hl("@field", { fg = colors.info })
+        set_hl("@parameter", { fg = colors.warning, italic = true })
+        set_hl("@punctuation.bracket", { link = "Delimiter" })
+        set_hl("@punctuation.delimiter", { link = "Delimiter" })
+        set_hl("@tag", { link = "Tag" })
+        set_hl("@tag.attribute", { fg = colors.secondary })
+        set_hl("@tag.delimiter", { fg = colors.muted })
+        set_hl("@constructor", { fg = colors.purple })
+        set_hl("@namespace", { fg = colors.info })
+        set_hl("@include", { link = "Include" })
+        set_hl("@conditional", { link = "Conditional" })
+        set_hl("@repeat", { link = "Repeat" })
+        set_hl("@label", { link = "Label" })
+        set_hl("@exception", { link = "Exception" })
+        set_hl("@text.title", { link = "Title" })
+        set_hl("@text.literal", { link = "String" })
+        set_hl("@text.uri", { fg = colors.success, underline = true })
+        set_hl("@text.emphasis", { italic = true })
+        set_hl("@text.strong", { bold = true })
+        set_hl("@text.todo", { fg = colors.bg, bg = colors.warning, bold = true })
+
+        set_hl("@lsp.type.variable", {})
+        set_hl("@lsp.type.property", { link = "@property" })
+        set_hl("@lsp.type.function", { link = "@function" })
+        set_hl("@lsp.type.method", { link = "@method" })
+        set_hl("@lsp.type.keyword", { link = "@keyword" })
+        set_hl("@lsp.type.namespace", { link = "@namespace" })
+        set_hl("@lsp.type.parameter", { link = "@parameter" })
+        set_hl("@lsp.type.type", { link = "Type" })
+        set_hl("@lsp.type.class", { link = "Type" })
+        set_hl("@lsp.type.struct", { link = "Type" })
+        set_hl("@lsp.type.enum", { link = "Type" })
+        set_hl("@lsp.type.interface", { link = "Type" })
+
+        vim.g.colors_name = "abhijeet_custom"
+      end,
+    },
+  },
 }
+
+return M
